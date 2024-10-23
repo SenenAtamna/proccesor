@@ -12,10 +12,10 @@ def functionThatPrintNumbers(numbers, quene):
   quene.put(sum)
 
 def main():
-  quen = multiprocessing.Queue()
+  queue = multiprocessing.Queue()
   print("The main Pid is " + str(os.getpid()) + " The Parent PID is " + str(os.getppid()))
   user_number = int(input("Please Enter A Number "))
-  process = multiprocessing.Process(target=functionThatPrintNumbers, args=(user_number, quen))
+  process = multiprocessing.Process(target=functionThatPrintNumbers, args=(user_number, queue))
   process.start()
   print("First Line")
   print("Second Line")
@@ -23,7 +23,7 @@ def main():
   print("Fourth Line")
   print("Fifth Line")
   process.join()
-  print(quen.get())
+  print(queue.get())
 
 if __name__ == "__main__":
   main()
